@@ -1,0 +1,47 @@
+﻿@model GraniteHouse.Models.TestTypes
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit Test Types</h2>
+
+
+<form method="post" asp-action="Edit">
+    <div class="p-4 border rounded">
+        @*<input type="hidden" asp-for="Id" />*@
+        @*<input type="hidden" asp-for="SpecialTag" />*@
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Id"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Id" class="form-control" />
+            </div>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Name"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Code"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Code" class="form-control" />
+            </div>
+            <span asp-validation-for="Code" class="text-danger"></span>
+        </div>
+        <br />
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Update" />
+            <a asp-action="Index" class="btn btn-success">Back to List</a>
+        </div>
+    </div>
+</form>
