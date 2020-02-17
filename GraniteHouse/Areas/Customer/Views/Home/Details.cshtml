@@ -77,7 +77,11 @@
                     }
                     else
                     {
-                        <button type="submit" value="Add to Bag" asp-route-id="@Model.Id" class="btn btn-primary form-control">Add to Bag</button>
+                        @if (Model.Available)
+                        {
+                            <button type="submit" value="Add to Bag" asp-route-id="@Model.Id" class="btn btn-primary form-control">Add to Bag</button>
+                        }
+
                     }
                 </div>
             </div>

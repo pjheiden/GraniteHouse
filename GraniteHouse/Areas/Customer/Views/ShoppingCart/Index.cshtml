@@ -1,0 +1,15 @@
+﻿@model GraniteHouse.Models.ViewModel.ShoppingCartViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+<div class="row">
+    @foreach (var item in Model.Products)
+    {
+        <div>
+            @item.Name
+        </div>
+    }
+
+</div>
