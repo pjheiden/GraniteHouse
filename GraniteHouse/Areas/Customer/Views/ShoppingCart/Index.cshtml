@@ -3,13 +3,123 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
-<div class="row">
-    @foreach (var item in Model.Products)
+
+<form method="post">
+    <br /><br />
+    <h2 class="text-info">Your Shopping Cart</h2>
+    <br />
+    @if (Model.Products.Count > 0)
     {
-        <div>
-            @item.Name
+        <div class="container border border-secondary rounded" style="padding:15px;">
+            <div class="row">
+                <div class="col-8" style="border-right:1px solid #bbb9b9;">
+                    <table class="table table-striped" width="100%">
+                        <tr class="table-info">
+                            <th style="text-align:center; width=20%"></th>
+                            <th style="text-align:center;">
+                                <label asp-for="@Model.Products.FirstOrDefault().Name"></label>
+                            </th>
+                            <th style="text-align:center;">
+                                <label asp-for="@Model.Products.FirstOrDefault().Price"></label>
+                            </th>
+                            <th style="text-align:center;">
+                                <label asp-for="@Model.Products.FirstOrDefault().ShadeColor"></label>
+                            </th>
+                            <th style="text-align:center;">
+                                <label asp-for="@Model.Products.FirstOrDefault().ProductTypes.Name"></label>
+                            </th>
+                            <th style="text-align:center;">
+
+                            </th>
+                        </tr>
+                        @foreach (var item in Model.Products)
+                        {
+                            <tr>
+                                <td>
+                                    <a asp-area="Customer" asp-controller="Home" asp-action="Details">
+                                        <img src="@item.Image" width="100%" />
+                                    </a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => item.Price)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => item.ShadeColor)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => item.ProductTypes.Name)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
         </div>
     }
+</form>
+<h2>Index</h2>
+<div class="row">
+    <div class="row">
+        @foreach (var item in Model.Products)
+        {
 
+            <div class="col-4">
+                @Html.DisplayFor(m => item.Name)
+            </div>
+            <div class="col-8">
+                @Html.DisplayFor(m => item.Price)
+            </div>
+        }
+    </div>
+</div>
+
+
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th>
+                @Html.DisplayNameFor(m => m.Products[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Products[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Products[0].Available)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Products[0].ProductTypes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.Products[0].SpecialTags)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.Name)
+                </td>
+                <td>
+                    @String.Format("{0:c}", item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Available)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.ProductTypes.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.SpecialTags.Name)
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+    </table>
 </div>

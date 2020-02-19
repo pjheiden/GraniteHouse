@@ -43,16 +43,15 @@
                                 var Count = HttpContextAccessor.HttpContext.Session.Get<List<int>>("ssShoppingCart").Count;
 
                             }
-                            (@Count)
+                            <i class="fas fa-shopping-cart"></i>(@Count)
                         </a>
                     </li>
                 }
                 else
                 {
                     <li>
-                        <i class="fas fa-shopping-cart"></i>
                         <a asp-area="Customer" asp-controller="ShoppingCart" asp-action="Index" class="nav-link">
-                            (0)
+                            <i class="fas fa-shopping-cart"></i> (0)
                         </a>
                     </li>
                 }
@@ -61,7 +60,7 @@
         <div>
             <partial name="_LoginPartial" />
         </div>
-    </nav>
+    </nav> 
 
 
 

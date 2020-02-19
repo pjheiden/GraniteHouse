@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using GraniteHouse.Data;
 using GraniteHouse.Extensions;
+using GraniteHouse.Models;
 using GraniteHouse.Models.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GraniteHouse.Areas.Customer.Controllers
 {
@@ -29,11 +31,29 @@ namespace GraniteHouse.Areas.Customer.Controllers
         public IActionResult Index()
         {
             List<int> lstShoppingCart = HttpContext.Session.Get<List<int>>("ssShoppingCart");
-            foreach(var productId in lstShoppingCart)
+            if (lstShoppingCart == null)
             {
-                ShoppingCartVM.Products.Add(_db.Products.FirstOrDefault(m => m.Id == productId));
+                lstShoppingCart = new List<int>();
+
             }
-            return View();
+            foreach (var cartItem in lstShoppingCart)
+            {
+      //          ShoppingCartVM.Products.Add(_db.Products.Include(m=>m.ProductTypes).Include(m=>m.SpecialTags).FirstOrDefault(m => m.Id == cartItem));
+
+                //ShoppingCartVM.Products.Add(_db.Products
+                //    .Include(m => m.ProductTypes)
+                //    .Include(m => m.SpecialTags)
+                //    .Where(m => m.Id == cartItem)
+                //    .First());
+                Products prod = _db.Products
+                    .Include(m => m.ProductTypes)
+                    .Include(m => m.SpecialTags)
+                    .Where(m => m.Id == cartItem)
+                    .First();
+
+                ShoppingCartVM.Products.Add(prod);
+            }
+            return View(ShoppingCartVM);
         }
     }
 }
