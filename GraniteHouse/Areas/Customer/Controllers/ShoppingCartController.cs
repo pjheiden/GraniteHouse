@@ -55,5 +55,20 @@ namespace GraniteHouse.Areas.Customer.Controllers
             }
             return View(ShoppingCartVM);
         }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Remove(int itemId, ShoppingCartViewModel sCart)
+        {
+            List<int> lstShoppingCart = HttpContext.Session.Get<List<int>>("ssShoppingCart");
+            lstShoppingCart.Remove(itemId);
+            var product = ShoppingCartVM.Products.FirstOrDefault(p => p.Id == itemId);
+
+            ShoppingCartVM.Products.Remove(product);
+            HttpContext.Session.Set<List<int>>("ssShoppingCart", lstShoppingCart);
+            return View(ShoppingCartVM);
+
+        }
     }
 }

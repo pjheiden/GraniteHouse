@@ -34,10 +34,10 @@
                         </tr>
                         @foreach (var item in Model.Products)
                         {
-                            <tr>
+                            <tr style="padding:50px;">
                                 <td>
-                                    <a asp-area="Customer" asp-controller="Home" asp-action="Details">
-                                        <img src="@item.Image" width="100%" />
+                                    <a asp-area="Customer" asp-controller="Home" asp-action="Details" asp-route-id="@item.Id">
+                                        <img src="@item.Image" width="100%" style="margin:auto; display:block; border-radius:5px; border:1px solid #bbb9b9;" />
                                     </a>
                                 </td>
                                 <td>
@@ -52,15 +52,59 @@
                                 <td>
                                     @Html.DisplayFor(m => item.ProductTypes.Name)
                                 </td>
+                                <td>
+                                    <a asp-action="Remove" asp-route-id="@item.Id" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                    @*<button type="submit" class="btn btn-danger" asp-action="Remove" asp-route-id="@item.Id">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>*@
+                                </td>
                             </tr>
                         }
                     </table>
                 </div>
+                <div class="col-4" style="padding-left:30px;">
+                    <div class="col-12">
+                        <label>Name : </label>
+                    </div>
+                    <div class="col-12" style="padding-bottom:15px">
+                        <input asp-for="@Model.Appointments.CustomerName" class="form-control" />
+                    </div>
+                    <div class="col-12">
+                        <label>Phone Number : </label>
+                    </div>
+                    <div class="col-12" style="padding-bottom:15px">
+                        <input asp-for="@Model.Appointments.CustomerPhoneNumber" class="form-control" />
+                    </div>
+                    <div class="col-12">
+                        <label>Email : </label>
+                    </div>
+                    <div class="col-12" style="padding-bottom:15px">
+                        <input asp-for="@Model.Appointments.CustomerEmail" class="form-control" />
+                    </div>
+                    <div class="col-12">
+                        <label>Appt Date : </label>
+                    </div>
+                    <div class="col-12" style="padding-bottom:15px">
+                        <input asp-for="@Model.Appointments.AppointmentDate" value="" type="text" id="datepicker" class="form-control" />
+                    </div>
+                    <div class="col-12">
+                        <label>Appt Time : </label>
+                    </div>
+                    <div class="col-12" style="padding-bottom:15px">
+                        <input asp-for="@Model.Appointments.AppointmentTime" value="" type="text" class="timepicker form-control" />
+                    </div>
+                </div>
             </div>
         </div>
     }
+    else
+    {
+        <div>No items added to the shopping cart...</div>
+    }
 </form>
-<h2>Index</h2>
+
+
+<h2>Other Testing Section</h2>
 <div class="row">
     <div class="row">
         @foreach (var item in Model.Products)
