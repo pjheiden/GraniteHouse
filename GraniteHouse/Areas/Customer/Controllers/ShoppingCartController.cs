@@ -57,7 +57,7 @@ namespace GraniteHouse.Areas.Customer.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost,ActionName("Remove")]
         [ValidateAntiForgeryToken]
         public IActionResult Remove(int itemId, ShoppingCartViewModel sCart)
         {
@@ -70,5 +70,7 @@ namespace GraniteHouse.Areas.Customer.Controllers
             return View(ShoppingCartVM);
 
         }
+
+
     }
 }
