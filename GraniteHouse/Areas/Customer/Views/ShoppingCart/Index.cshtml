@@ -53,10 +53,9 @@
                                     @Html.DisplayFor(m => item.ProductTypes.Name)
                                 </td>
                                 <td>
-                                    <a asp-area="Customer" asp-controller="ShoppingCart" asp-action="Remove" asp-route-id="@item.Id" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
-                                    @*<button type="submit" class="btn btn-danger" asp-action="Remove" asp-route-id="@item.Id">
+                                    <button type="submit" class="btn btn-danger" asp-action="Remove" asp-route-id="@item.Id">
                                         <i class="fas fa-trash-alt"></i>
-                                    </button>*@
+                                    </button>
                                 </td>
                             </tr>
                         }
@@ -94,7 +93,7 @@
                         <input asp-for="@Model.Appointments.AppointmentTime" value="" type="text" class="timepicker form-control" />
                     </div>
                     <div class="col-12">
-                        <button type="submit" id="btnPlaceOrder" class="btn btn-success">Schedule Appointment</button>
+                        <button type="submit" id="btnPlaceOrder" class="btn btn-success">Schedule Appointment</button>                        
                     </div>
                 </div>
             </div>

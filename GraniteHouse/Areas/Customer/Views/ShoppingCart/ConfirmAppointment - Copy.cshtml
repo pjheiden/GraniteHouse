@@ -1,0 +1,56 @@
+﻿@model GraniteHouse.Models.ViewModel.ShoppingCartViewModel
+@{
+    ViewData["Title"] = "ConfirmAppointment";
+}
+
+<h2>ConfirmAppointment</h2>
+
+<form method="post">
+    <br /><br />
+    <h2 class="text-info">Confirm</h2>
+    <br />
+        <div class="container border border-secondary rounded" style="padding:15px;">
+            <div class="row">
+                <div class="col-4" style="padding-left:30px;">
+                    <div class="col-12">
+                        <label>Name : </label>
+                    </div>
+                    <div class="col-12" style="padding-bottom:15px">
+                        <input asp-for="@Model.Appointments.CustomerName" disabled class="form-control" />
+                    </div>
+                    <div class="col-12">
+                        <label>Phone Number : </label>
+                    </div>
+                    <div class="col-12" style="padding-bottom:15px">
+                        <input asp-for="@Model.Appointments.CustomerPhoneNumber" disabled class="form-control" />
+                    </div>
+                    <div class="col-12">
+                        <label>Email : </label>
+                    </div>
+                    <div class="col-12" style="padding-bottom:15px">
+                        <input asp-for="@Model.Appointments.CustomerEmail" disabled class="form-control" />
+                    </div>
+                    <div class="col-12">
+                        <label>Appt Date : </label>
+                    </div>
+                    <div class="col-12" style="padding-bottom:15px">
+                        <input asp-for="@Model.Appointments.AppointmentDate" disabled type="text" class="form-control" />
+                    </div>
+                    <div class="col-12">
+                        <label>Appt Time : </label>
+                    </div>
+                    <div class="col-12" style="padding-bottom:15px">
+                        <input asp-for="@Model.Appointments.AppointmentTime" type="text" class="form-control" />
+                    </div>
+                    <div class="col-12">
+                        @*<button type="submit" id="btnPlaceOrder" asp-action="Index" class="btn btn-success">Confirm Appointment</button>*@
+                        <button type="submit" id="btnPlaceOrder" class="btn btn-success">Confirm Appointment</button>
+                        <a asp-area="Customer" asp-action="Index">Back to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</form>
+
+
